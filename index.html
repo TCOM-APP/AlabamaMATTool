@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js"></script>
+    <title>Alabama MAT Tool</title>
+</head>
+
+<body>
+    <h1>Alabama Support Model Level of Need Calculator</h1>
+    <h2>Please Enter Assessment Ratings: </h2>
+    <div class="popup">
+        <span class="popuptext" id="myPopup">Please Enter Age</span>
+    </div>
+    <input id="age" type="number" placeholder="Enter Age">
+    <div class="buttons">
+        <button id="calc">Submit</button>
+        <button id="reset">Reset</button>
+    </div>
+
+    <div id="result"></div>
+    <div class="ratings">
+        <div class="col">
+            <h3>A. Functional Status</h3>
+            <form id="physMed">
+                1. Physical/Medical:
+                <div class="radios">
+                    <input type="radio" class="r" class="r" id="A10" name="physicalMedical" value="0" checked>
+                    <label for="A10">0</label>
+                    <input type="radio" class="r" id="A11" name="physicalMedical" value="1">
+                    <label for="A11">1</label>
+                    <input type="radio" class="r" id="A12" name="physicalMedical" value="2">
+                    <label for="A12">2</label>
+                    <input type="radio" class="r" id="A13" name="physicalMedical" value="3">
+                    <label for="A13">3</label>
+                </div>
+            </form>
+            <form id="intellectual">
+                2. Intellectual:
+                <div class="radios">
+                    <input type="radio" class="r" id="A20" name="intellectual" value="0" checked>
+                    <label for="A20">0</label>
+                    <input type="radio" class="r" id="A21" name="intellectual" value="1">
+                    <label for="A21">1</label>
+                    <input type="radio" class="r" id="A22" name="intellectual" value="2">
+                    <label for="A22">2</label>
+                    <input type="radio" class="r" id="A23" name="intellectual" value="3">
+                    <label for="A23">3</label>
+                </div>
+            </form>
+            <form id="developmental">
+                3. Developmental:
+                <div class="radios">
+                    <input type="radio" class="r" id="A30" name="developmental" value="0" checked>
+                    <label for="A30">0</label>
+                    <input type="radio" class="r" id="A31" name="developmental" value="1">
+                    <label for="A31">1</label>
+                    <input type="radio" class="r" id="A32" name="developmental" value="2">
+                    <label for="A32">2</label>
+                    <input type="radio" class="r" id="A33" name="developmental" value="3">
+                    <label for="A33">3</label>
+                </div>
+            </form>
+            <form id="selfCare">
+                4. Self-Care/Daily Living Skills:
+                <div class="radios">
+                    <input type="radio" class="r" id="A40" name="selfCare" value="0" checked>
+                    <label for="A40">0</label>
+                    <input type="radio" class="r" id="A41" name="selfCare" value="1">
+                    <label for="A41">1</label>
+                    <input type="radio" class="r" id="A42" name="selfCare" value="2">
+                    <label for="A42">2</label>
+                    <input type="radio" class="r" id="A43" name="selfCare" value="3">
+                    <label for="A43">3</label>
+                </div>
+            </form>
+            <form id="familyFunc">
+                5. Family Functioning:
+                <div class="radios">
+                    <input type="radio" class="r" id="A50" name="familyFunc" value="0" checked>
+                    <label for="A50">0</label>
+                    <input type="radio" class="r" id="A51" name="familyFunc" value="1">
+                    <label for="A51">1</label>
+                    <input type="radio" class="r" id="A52" name="familyFunc" value="2">
+                    <label for="A52">2</label>
+                    <input type="radio" class="r" id="A53" name="familyFunc" value="3">
+                    <label for="A53">3</label>
+                </div>
+            </form>
+            <form id="sleep">
+                6. Sleep:
+                <div class="radios">
+                    <input type="radio" class="r" id="A60" name="sleep" value="0" checked>
+                    <label for="A60">0</label>
+                    <input type="radio" class="r" id="A61" name="sleep" value="1">
+                    <label for="A61">1</label>
+                    <input type="radio" class="r" id="A62" name="sleep" value="2">
+                    <label for="A62">2</label>
+                    <input type="radio" class="r" id="A63" name="sleep" value="3">
+                    <label for="A63">3</label>
+                </div>
+            </form>
+            <form id="schoolAch">
+                7. School Achievement:
+                <div class="radios">
+                    <input type="radio" class="r" id="A70" name="schoolAch" value="0" checked>
+                    <label for="A70">0</label>
+                    <input type="radio" class="r" id="A71" name="schoolAch" value="1">
+                    <label for="A71">1</label>
+                    <input type="radio" class="r" id="A72" name="schoolAch" value="2">
+                    <label for="A72">2</label>
+                    <input type="radio" class="r" id="A73" name="schoolAch" value="3">
+                    <label for="A73">3</label>
+                </div>
+            </form>
+            <form id="schoolBeh">
+                8. School Behavior:
+                <div class="radios">
+                    <input type="radio" class="r" id="A80" name="schoolBeh" value="0" checked>
+                    <label for="A80">0</label>
+                    <input type="radio" class="r" id="A81" name="schoolBeh" value="1">
+                    <label for="A81">1</label>
+                    <input type="radio" class="r" id="A82" name="schoolBeh" value="2">
+                    <label for="A82">2</label>
+                    <input type="radio" class="r" id="A83" name="schoolBeh" value="3">
+                    <label for="A83">3</label>
+                </div>
+            </form>
+            <form id="schoolAtt">
+                9. School Attendance:
+                <div class="radios">
+                    <input type="radio" class="r" id="A90" name="schoolAtt" value="0" checked>
+                    <label for="A90">0</label>
+                    <input type="radio" class="r" id="A91" name="schoolAtt" value="1">
+                    <label for="A91">1</label>
+                    <input type="radio" class="r" id="A92" name="schoolAtt" value="2">
+                    <label for="A92">2</label>
+                    <input type="radio" class="r" id="A93" name="schoolAtt" value="3">
+                    <label for="A93">3</label>
+                </div>
+            </form>
+            <form id="sexDev">
+                10. Sexual Developement:
+                <div class="radios">
+                    <input type="radio" class="r" id="A00" name="sexDev" value="0" checked>
+                    <label for="A00">0</label>
+                    <input type="radio" class="r" id="A01" name="sexDev" value="1">
+                    <label for="A01">1</label>
+                    <input type="radio" class="r" id="A02" name="sexDev" value="2">
+                    <label for="A02">2</label>
+                    <input type="radio" class="r" id="A03" name="sexDev" value="3">
+                    <label for="A03">3</label>
+                </div>
+            </form>
+
+            <h3>B. Child Safety</h3>
+            <form id="abuse">
+                11. Abuse:
+                <div class="radios">
+                    <input type="radio" class="r" id="B00" name="abuse" value="0" checked>
+                    <label for="B00">0</label>
+                    <input type="radio" class="r" id="B01" name="abuse" value="1">
+                    <label for="B01">1</label>
+                    <input type="radio" class="r" id="B02" name="abuse" value="2">
+                    <label for="B02">2</label>
+                    <input type="radio" class="r" id="B03" name="abuse" value="3">
+                    <label for="B03">3</label>
+                </div>
+            </form>
+            <form id="neglect">
+                12. Neglect:
+                <div class="radios">
+                    <input type="radio" class="r" id="B10" name="neglect" value="0" checked>
+                    <label for="B10">0</label>
+                    <input type="radio" class="r" id="B11" name="neglect" value="1">
+                    <label for="B11">1</label>
+                    <input type="radio" class="r" id="B12" name="neglect" value="2">
+                    <label for="B12">2</label>
+                    <input type="radio" class="r" id="B13" name="neglect" value="3">
+                    <label for="B13">3</label>
+                </div>
+            </form>
+            <form id="permanency">
+                13. Permanency:
+                <div class="radios">
+                    <input type="radio" class="r" id="B20" name="permanency" value="0" checked>
+                    <label for="B20">0</label>
+                    <input type="radio" class="r" id="B21" name="permanency" value="1">
+                    <label for="B21">1</label>
+                    <input type="radio" class="r" id="B22" name="permanency" value="2">
+                    <label for="B22">2</label>
+                    <input type="radio" class="r" id="B23" name="permanency" value="3">
+                    <label for="B23">3</label>
+                </div>
+            </form>
+            <form id="exploitation">
+                14. Expliotation:
+                <div class="radios">
+                    <input type="radio" class="r" id="B30" name="exploitation" value="0" checked>
+                    <label for="B30">0</label>
+                    <input type="radio" class="r" id="B31" name="exploitation" value="1">
+                    <label for="B31">1</label>
+                    <input type="radio" class="r" id="B32" name="exploitation" value="2">
+                    <label for="B32">2</label>
+                    <input type="radio" class="r" id="B33" name="exploitation" value="3">
+                    <label for="B33">3</label>
+                </div>
+            </form>
+
+            <h3>C. Mental Health Needs</h3>
+            <form id="psychoticSymp">
+                15. Psychotic Symptoms:
+                <div class="radios">
+                    <input type="radio" class="r" id="C00" name="psychoticSymp" value="0" checked>
+                    <label for="C00">0</label>
+                    <input type="radio" class="r" id="C01" name="psychoticSymp" value="1">
+                    <label for="C01">1</label>
+                    <input type="radio" class="r" id="C02" name="psychoticSymp" value="2">
+                    <label for="C02">2</label>
+                    <input type="radio" class="r" id="C03" name="psychoticSymp" value="3">
+                    <label for="C03">3</label>
+                </div>
+            </form>
+            <form id="attentionDef">
+                16. Attention Deficit/Impulse Control:
+                <div class="radios">
+                    <input type="radio" class="r" id="C10" name="attentionDef" value="0" checked>
+                    <label for="C10">0</label>
+                    <input type="radio" class="r" id="C11" name="attentionDef" value="1">
+                    <label for="C11">1</label>
+                    <input type="radio" class="r" id="C12" name="attentionDef" value="2">
+                    <label for="C12">2</label>
+                    <input type="radio" class="r" id="C13" name="attentionDef" value="3">
+                    <label for="C13">3</label>
+                </div>
+            </form>
+            <form id="depression">
+                17. Depression/Anxiety:
+                <div class="radios">
+                    <input type="radio" class="r" id="C20" name="depression" value="0" checked>
+                    <label for="C20">0</label>
+                    <input type="radio" class="r" id="C21" name="depression" value="1">
+                    <label for="C21">1</label>
+                    <input type="radio" class="r" id="C22" name="depression" value="2">
+                    <label for="C22">2</label>
+                    <input type="radio" class="r" id="C23" name="depression" value="3">
+                    <label for="C23">3</label>
+                </div>
+            </form>
+            <form id="anger">
+                18. Anger Control:
+                <div class="radios">
+                    <input type="radio" class="r" id="C30" name="anger" value="0" checked>
+                    <label for="C30">0</label>
+                    <input type="radio" class="r" id="C31" name="anger" value="1">
+                    <label for="C31">1</label>
+                    <input type="radio" class="r" id="C32" name="anger" value="2">
+                    <label for="C32">2</label>
+                    <input type="radio" class="r" id="C33" name="anger" value="3">
+                    <label for="C33">3</label>
+                </div>
+            </form>
+            <form id="opposition">
+                19. Oppositional Behavior:
+                <div class="radios">
+                    <input type="radio" class="r" id="C40" name="opposition" value="0" checked>
+                    <label for="C40">0</label>
+                    <input type="radio" class="r" id="C41" name="opposition" value="1">
+                    <label for="C41">1</label>
+                    <input type="radio" class="r" id="C42" name="opposition" value="2">
+                    <label for="C42">2</label>
+                    <input type="radio" class="r" id="C43" name="opposition" value="3">
+                    <label for="C43">3</label>
+                </div>
+            </form>
+            <form id="antiSocial">
+                20. Antisocial Behavior:
+                <div class="radios">
+                    <input type="radio" class="r" id="C50" name="antiSocial" value="0" checked>
+                    <label for="C50">0</label>
+                    <input type="radio" class="r" id="C51" name="antiSocial" value="1">
+                    <label for="C51">1</label>
+                    <input type="radio" class="r" id="C52" name="antiSocial" value="2">
+                    <label for="C52">2</label>
+                    <input type="radio" class="r" id="C53" name="antiSocial" value="3">
+                    <label for="C53">3</label>
+                </div>
+            </form>
+            <form id="adjustTrauma">
+                21. Adjustment to Trauma:
+                <div class="radios">
+                    <input type="radio" class="r" id="C60" name="adjustTrauma" value="0" checked>
+                    <label for="C60">0</label>
+                    <input type="radio" class="r" id="C61" name="adjustTrauma" value="1">
+                    <label for="C61">1</label>
+                    <input type="radio" class="r" id="C62" name="adjustTrauma" value="2">
+                    <label for="C62">2</label>
+                    <input type="radio" class="r" id="C63" name="adjustTrauma" value="3">
+                    <label for="C63">3</label>
+                </div>
+            </form>
+            <form id="attachment">
+                22. Attachment:
+                <div class="radios">
+                    <input type="radio" class="r" id="C70" name="attachment" value="0" checked>
+                    <label for="C70">0</label>
+                    <input type="radio" class="r" id="C71" name="attachment" value="1">
+                    <label for="C71">1</label>
+                    <input type="radio" class="r" id="C72" name="attachment" value="2">
+                    <label for="C72">2</label>
+                    <input type="radio" class="r" id="C73" name="attachment" value="3">
+                    <label for="C73">3</label>
+                </div>
+            </form>
+            <form id="situationalCon">
+                23. Situational Consistency of Problems:
+                <div class="radios">
+                    <input type="radio" class="r" id="C80" name="situationalCon" value="0" checked>
+                    <label for="C80">0</label>
+                    <input type="radio" class="r" id="C81" name="situationalCon" value="1">
+                    <label for="C81">1</label>
+                    <input type="radio" class="r" id="C82" name="situationalCon" value="2">
+                    <label for="C82">2</label>
+                    <input type="radio" class="r" id="C83" name="situationalCon" value="3">
+                    <label for="C83">3</label>
+                </div>
+            </form>
+            <form id="temporalCon">
+                24. Temporal Consistency of Mental Health Problems:
+                <div class="radios">
+                    <input type="radio" class="r" id="C90" name="temporalCon" value="0" checked>
+                    <label for="C90">0</label>
+                    <input type="radio" class="r" id="C91" name="temporalCon" value="1">
+                    <label for="C91">1</label>
+                    <input type="radio" class="r" id="C92" name="temporalCon" value="2">
+                    <label for="C92">2</label>
+                    <input type="radio" class="r" id="C93" name="temporalCon" value="3">
+                    <label for="C93">3</label>
+                </div>
+            </form>
+            <form id="abuseHistory">
+                25. Abuse History:
+                <div class="radios">
+                    <input type="radio" class="r" id="C100" name="abuseHistory" value="0" checked>
+                    <label for="C100">0</label>
+                    <input type="radio" class="r" id="C101" name="abuseHistory" value="1">
+                    <label for="C101">1</label>
+                    <input type="radio" class="r" id="C102" name="abuseHistory" value="2">
+                    <label for="C102">2</label>
+                    <input type="radio" class="r" id="C103" name="abuseHistory" value="3">
+                    <label for="C103">3</label>
+                </div>
+            </form>
+            <form id="familyHistory">
+                26. Family History of Mental Illness:
+                <div class="radios">
+                    <input type="radio" class="r" id="C110" name="familyHistory" value="0" checked>
+                    <label for="C110">0</label>
+                    <input type="radio" class="r" id="C111" name="familyHistory" value="1">
+                    <label for="C111">1</label>
+                    <input type="radio" class="r" id="C112" name="familyHistory" value="2">
+                    <label for="C112">2</label>
+                    <input type="radio" class="r" id="C113" name="familyHistory" value="3">
+                    <label for="C113">3</label>
+                </div>
+            </form>
+            <h3>D. Child Risk Behaviors</h3>
+            <form id="suicideRisk">
+                27. Suicide Risk:
+                <div class="radios">
+                    <input type="radio" class="r" id="D00" name="suicideRisk" value="0" checked>
+                    <label for="D00">0</label>
+                    <input type="radio" class="r" id="D01" name="suicideRisk" value="1">
+                    <label for="D01">1</label>
+                    <input type="radio" class="r" id="D02" name="suicideRisk" value="2">
+                    <label for="D02">2</label>
+                    <input type="radio" class="r" id="D03" name="suicideRisk" value="3">
+                    <label for="D03">3</label>
+                </div>
+            </form>
+            <form id="selfMut">
+                28. Self Mutilation:
+                <div class="radios">
+                    <input type="radio" class="r" id="D10" name="selfMut" value="0" checked>
+                    <label for="D10">0</label>
+                    <input type="radio" class="r" id="D11" name="selfMut" value="1">
+                    <label for="D11">1</label>
+                    <input type="radio" class="r" id="D12" name="selfMut" value="2">
+                    <label for="D12">2</label>
+                    <input type="radio" class="r" id="D13" name="selfMut" value="3">
+                    <label for="D13">3</label>
+                </div>
+            </form>
+            <form id="fireSet">
+                29. Fire Setting:
+                <div class="radios">
+                    <input type="radio" class="r" id="D20" name="fireSet" value="0" checked>
+                    <label for="D20">0</label>
+                    <input type="radio" class="r" id="D21" name="fireSet" value="1">
+                    <label for="D21">1</label>
+                    <input type="radio" class="r" id="D22" name="fireSet" value="2">
+                    <label for="D22">2</label>
+                    <input type="radio" class="r" id="D23" name="fireSet" value="3">
+                    <label for="D23">3</label>
+                </div>
+            </form>
+            <form id="runaway">
+                30. Runaway:
+                <div class="radios">
+                    <input type="radio" class="r" id="D30" name="runaway" value="0" checked>
+                    <label for="D30">0</label>
+                    <input type="radio" class="r" id="D31" name="runaway" value="1">
+                    <label for="D31">1</label>
+                    <input type="radio" class="r" id="D32" name="runaway" value="2">
+                    <label for="D32">2</label>
+                    <input type="radio" class="r" id="D33" name="runaway" value="3">
+                    <label for="D33">3</label>
+                </div>
+            </form>
+            <form id="socialBeh">
+                31. Social Behavior:
+                <div class="radios">
+                    <input type="radio" class="r" id="D40" name="socialBeh" value="0" checked>
+                    <label for="D40">0</label>
+                    <input type="radio" class="r" id="D41" name="socialBeh" value="1">
+                    <label for="D41">1</label>
+                    <input type="radio" class="r" id="D42" name="socialBeh" value="2">
+                    <label for="D42">2</label>
+                    <input type="radio" class="r" id="D43" name="socialBeh" value="3">
+                    <label for="D43">3</label>
+                </div>
+            </form>
+        </div>
+        <div class="col">
+            <h3>E. Substance Abuse</h3>
+            <form id="substanceUse">
+                32. Substance Use:
+                <div class="radios">
+                    <input type="radio" class="r" id="E00" name="substanceUse" value="0" checked>
+                    <label for="E00">0</label>
+                    <input type="radio" class="r" id="E01" name="substanceUse" value="1">
+                    <label for="E01">1</label>
+                    <input type="radio" class="r" id="E02" name="substanceUse" value="2">
+                    <label for="E02">2</label>
+                    <input type="radio" class="r" id="E03" name="substanceUse" value="3">
+                    <label for="E03">3</label>
+                </div>
+            </form>
+            <h3>F. Criminal and Delinquent Behavior</h3>
+            <form id="delinquency">
+                33. Delinquency:
+                <div class="radios">
+                    <input type="radio" class="r" id="F00" name="delinquency" value="0" checked>
+                    <label for="F00">0</label>
+                    <input type="radio" class="r" id="F01" name="delinquency" value="1">
+                    <label for="F01">1</label>
+                    <input type="radio" class="r" id="F02" name="delinquency" value="2">
+                    <label for="F02">2</label>
+                    <input type="radio" class="r" id="F03" name="delinquency" value="3">
+                    <label for="F03">3</label>
+                </div>
+            </form>
+            <form id="dangerTo">
+                34. Danger to Others/Violence:
+                <div class="radios">
+                    <input type="radio" class="r" id="F10" name="dangerTo" value="0" checked>
+                    <label for="F10">0</label>
+                    <input type="radio" class="r" id="F11" name="dangerTo" value="1">
+                    <label for="F11">1</label>
+                    <input type="radio" class="r" id="F12" name="dangerTo" value="2">
+                    <label for="F12">2</label>
+                    <input type="radio" class="r" id="F13" name="dangerTo" value="3">
+                    <label for="F13">3</label>
+                </div>
+            </form>
+            <form id="sexuallyReac">
+                35. Sexually Reactive Behavior:
+                <div class="radios">
+                    <input type="radio" class="r" id="F20" name="sexuallyReac" value="0" checked>
+                    <label for="F20">0</label>
+                    <input type="radio" class="r" id="F21" name="sexuallyReac" value="1">
+                    <label for="F21">1</label>
+                    <input type="radio" class="r" id="F22" name="sexuallyReac" value="2">
+                    <label for="F22">2</label>
+                    <input type="radio" class="r" id="F23" name="sexuallyReac" value="3">
+                    <label for="F23">3</label>
+                </div>
+            </form>
+            <form id="sexualAgg">
+                36. Sexual Aggression:
+                <div class="radios">
+                    <input type="radio" class="r" id="F30" name="sexualAgg" value="0" checked>
+                    <label for="F30">0</label>
+                    <input type="radio" class="r" id="F31" name="sexualAgg" value="1">
+                    <label for="F31">1</label>
+                    <input type="radio" class="r" id="F32" name="sexualAgg" value="2">
+                    <label for="F32">2</label>
+                    <input type="radio" class="r" id="F33" name="sexualAgg" value="3">
+                    <label for="F33">3</label>
+                </div>
+            </form>
+            <h3>G. Care Management</h3>
+            <form id="urgancy">
+                37. Urgency:
+                <div class="radios">
+                    <input type="radio" class="r" id="G00" name="urgancy" value="0" checked>
+                    <label for="G00">0</label>
+                    <input type="radio" class="r" id="G01" name="urgancy" value="1">
+                    <label for="G01">1</label>
+                    <input type="radio" class="r" id="G02" name="urgancy" value="2">
+                    <label for="G02">2</label>
+                    <input type="radio" class="r" id="G03" name="urgancy" value="3">
+                    <label for="G03">3</label>
+                </div>
+            </form>
+            <form id="monitoring">
+                38. Monitoring:
+                <div class="radios">
+                    <input type="radio" class="r" id="G10" name="monitoring" value="0" checked>
+                    <label for="G10">0</label>
+                    <input type="radio" class="r" id="G11" name="monitoring" value="1">
+                    <label for="G11">1</label>
+                    <input type="radio" class="r" id="G12" name="monitoring" value="2">
+                    <label for="G12">2</label>
+                    <input type="radio" class="r" id="G13" name="monitoring" value="3">
+                    <label for="G13">3</label>
+                </div>
+            </form>
+            <form id="treatmentInt">
+                39. Treatment Intensity:
+                <div class="radios">
+                    <input type="radio" class="r" id="G20" name="treatmentInt" value="0" checked>
+                    <label for="G20">0</label>
+                    <input type="radio" class="r" id="G21" name="treatmentInt" value="1">
+                    <label for="G21">1</label>
+                    <input type="radio" class="r" id="G22" name="treatmentInt" value="2">
+                    <label for="G22">2</label>
+                    <input type="radio" class="r" id="G23" name="treatmentInt" value="3">
+                    <label for="G23">3</label>
+                </div>
+            </form>
+            <form id="transportation">
+                40. Transportation:
+                <div class="radios">
+                    <input type="radio" class="r" id="G30" name="transportation" value="0" checked>
+                    <label for="G30">0</label>
+                    <input type="radio" class="r" id="G31" name="transportation" value="1">
+                    <label for="G31">1</label>
+                    <input type="radio" class="r" id="G32" name="transportation" value="2">
+                    <label for="G32">2</label>
+                    <input type="radio" class="r" id="G33" name="transportation" value="3">
+                    <label for="G33">3</label>
+                </div>
+            </form>
+            <form id="servicePerm">
+                41. Service Permanence:
+                <div class="radios">
+                    <input type="radio" class="r" id="G40" name="servicePerm" value="0" checked>
+                    <label for="G40">0</label>
+                    <input type="radio" class="r" id="G41" name="servicePerm" value="1">
+                    <label for="G41">1</label>
+                    <input type="radio" class="r" id="G42" name="servicePerm" value="2">
+                    <label for="G42">2</label>
+                    <input type="radio" class="r" id="G43" name="servicePerm" value="3">
+                    <label for="G43">3</label>
+                </div>
+            </form>
+            <h3>H. Family/Caregiver Needs and Strengths</h3>
+            <form id="physBehHea">
+                42. Physical/Behavioral Health (CG):
+                <div class="radios">
+                    <input type="radio" class="r" id="H00" name="physBehHea" value="0" checked>
+                    <label for="H00">0</label>
+                    <input type="radio" class="r" id="H01" name="physBehHea" value="1">
+                    <label for="H01">1</label>
+                    <input type="radio" class="r" id="H02" name="physBehHea" value="2">
+                    <label for="H02">2</label>
+                    <input type="radio" class="r" id="H03" name="physBehHea" value="3">
+                    <label for="H03">3</label>
+                </div>
+            </form>
+            <form id="supervision">
+                43. Supervision (CG):
+                <div class="radios">
+                    <input type="radio" class="r" id="H10" name="supervision" value="0" checked>
+                    <label for="H10">0</label>
+                    <input type="radio" class="r" id="H11" name="supervision" value="1">
+                    <label for="H11">1</label>
+                    <input type="radio" class="r" id="H12" name="supervision" value="2">
+                    <label for="H12">2</label>
+                    <input type="radio" class="r" id="H13" name="supervision" value="3">
+                    <label for="H13">3</label>
+                </div>
+            </form>
+            <form id="involvement">
+                44. Involvement with Care (CG):
+                <div class="radios">
+                    <input type="radio" class="r" id="H20" name="involvement" value="0" checked>
+                    <label for="H20">0</label>
+                    <input type="radio" class="r" id="H21" name="involvement" value="1">
+                    <label for="H21">1</label>
+                    <input type="radio" class="r" id="H22" name="involvement" value="2">
+                    <label for="H22">2</label>
+                    <input type="radio" class="r" id="H23" name="involvement" value="3">
+                    <label for="H23">3</label>
+                </div>
+            </form>
+            <form id="knowledge">
+                45. Knowledge (CG):
+                <div class="radios">
+                    <input type="radio" class="r" id="H30" name="knowledge" value="0" checked>
+                    <label for="H30">0</label>
+                    <input type="radio" class="r" id="H31" name="knowledge" value="1">
+                    <label for="H31">1</label>
+                    <input type="radio" class="r" id="H32" name="knowledge" value="2">
+                    <label for="H32">2</label>
+                    <input type="radio" class="r" id="H33" name="knowledge" value="3">
+                    <label for="H33">3</label>
+                </div>
+            </form>
+            <form id="organizationCG">
+                46. Organization (CG):
+                <div class="radios">
+                    <input type="radio" class="r" id="H40" name="organizationCG" value="0" checked>
+                    <label for="H40">0</label>
+                    <input type="radio" class="r" id="H41" name="organizationCG" value="1">
+                    <label for="H41">1</label>
+                    <input type="radio" class="r" id="H42" name="organizationCG" value="2">
+                    <label for="H42">2</label>
+                    <input type="radio" class="r" id="H43" name="organizationCG" value="3">
+                    <label for="H43">3</label>
+                </div>
+            </form>
+            <form id="resources">
+                47. Resources (CG):
+                <div class="radios">
+                    <input type="radio" class="r" id="H50" name="resources" value="0" checked>
+                    <label for="H50">0</label>
+                    <input type="radio" class="r" id="H51" name="resources" value="1">
+                    <label for="H51">1</label>
+                    <input type="radio" class="r" id="H52" name="resources" value="2">
+                    <label for="H52">2</label>
+                    <input type="radio" class="r" id="H53" name="resources" value="3">
+                    <label for="H53">3</label>
+                </div>
+            </form>
+            <form id="residential">
+                48. Residential Stability (CG):
+                <div class="radios">
+                    <input type="radio" class="r" id="H60" name="residential" value="0" checked>
+                    <label for="H60">0</label>
+                    <input type="radio" class="r" id="H61" name="residential" value="1">
+                    <label for="H61">1</label>
+                    <input type="radio" class="r" id="H62" name="residential" value="2">
+                    <label for="H62">2</label>
+                    <input type="radio" class="r" id="H63" name="residential" value="3">
+                    <label for="H63">3</label>
+                </div>
+            </form>
+            <h3>I. Strenghts</h3>
+            <form id="family">
+                49. Family:
+                <div class="radios">
+                    <input type="radio" class="r" id="I00" name="family" value="0" checked>
+                    <label for="I00">0</label>
+                    <input type="radio" class="r" id="I01" name="family" value="1">
+                    <label for="I01">1</label>
+                    <input type="radio" class="r" id="I02" name="family" value="2">
+                    <label for="I02">2</label>
+                    <input type="radio" class="r" id="I03" name="family" value="3">
+                    <label for="I03">3</label>
+                </div>
+            </form>
+            <form id="interpersonal">
+                50. Interpersonal:
+                <div class="radios">
+                    <input type="radio" class="r" id="I10" name="interpersonal" value="0" checked>
+                    <label for="I10">0</label>
+                    <input type="radio" class="r" id="I11" name="interpersonal" value="1">
+                    <label for="I11">1</label>
+                    <input type="radio" class="r" id="I12" name="interpersonal" value="2">
+                    <label for="I12">2</label>
+                    <input type="radio" class="r" id="I13" name="interpersonal" value="3">
+                    <label for="I13">3</label>
+                </div>
+            </form>
+            <form id="relationsipPerm">
+                51. Relationship Permanence:
+                <div class="radios">
+                    <input type="radio" class="r" id="I20" name="relationsipPerm" value="0" checked>
+                    <label for="I20">0</label>
+                    <input type="radio" class="r" id="I21" name="relationsipPerm" value="1">
+                    <label for="I21">1</label>
+                    <input type="radio" class="r" id="I22" name="relationsipPerm" value="2">
+                    <label for="I22">2</label>
+                    <input type="radio" class="r" id="I23" name="relationsipPerm" value="3">
+                    <label for="I23">3</label>
+                </div>
+            </form>
+            <form id="educational">
+                52. Educational:
+                <div class="radios">
+                    <input type="radio" class="r" id="I30" name="educational" value="0" checked>
+                    <label for="I30">0</label>
+                    <input type="radio" class="r" id="I31" name="educational" value="1">
+                    <label for="I31">1</label>
+                    <input type="radio" class="r" id="I32" name="educational" value="2">
+                    <label for="I32">2</label>
+                    <input type="radio" class="r" id="I33" name="educational" value="3">
+                    <label for="I33">3</label>
+                </div>
+            </form>
+            <form id="vocational">
+                53. Vocational:
+                <div class="radios">
+                    <input type="radio" class="r" id="I40" name="vocational" value="0" checked>
+                    <label for="I40">0</label>
+                    <input type="radio" class="r" id="I41" name="vocational" value="1">
+                    <label for="I41">1</label>
+                    <input type="radio" class="r" id="I42" name="vocational" value="2">
+                    <label for="I42">2</label>
+                    <input type="radio" class="r" id="I43" name="vocational" value="3">
+                    <label for="I43">3</label>
+                </div>
+            </form>
+            <form id="resiliencyCr">
+                54. Resiliency-Crisis:
+                <div class="radios">
+                    <input type="radio" class="r" id="I50" name="resiliencyCr" value="0" checked>
+                    <label for="I50">0</label>
+                    <input type="radio" class="r" id="I51" name="resiliencyCr" value="1">
+                    <label for="I51">1</label>
+                    <input type="radio" class="r" id="I52" name="resiliencyCr" value="2">
+                    <label for="I52">2</label>
+                    <input type="radio" class="r" id="I53" name="resiliencyCr" value="3">
+                    <label for="I53">3</label>
+                </div>
+            </form>
+            <form id="resiliencyLong">
+                55. Resiliency-Long Term:
+                <div class="radios">
+                    <input type="radio" class="r" id="I60" name="resiliencyLong" value="0" checked>
+                    <label for="I60">0</label>
+                    <input type="radio" class="r" id="I61" name="resiliencyLong" value="1">
+                    <label for="I61">1</label>
+                    <input type="radio" class="r" id="I62" name="resiliencyLong" value="2">
+                    <label for="I62">2</label>
+                    <input type="radio" class="r" id="I63" name="resiliencyLong" value="3">
+                    <label for="I63">3</label>
+                </div>
+            </form>
+            <form id="optimism">
+                56. Optimism:
+                <div class="radios">
+                    <input type="radio" class="r" id="I70" name="optimism" value="0" checked>
+                    <label for="I70">0</label>
+                    <input type="radio" class="r" id="I71" name="optimism" value="1">
+                    <label for="I71">1</label>
+                    <input type="radio" class="r" id="I72" name="optimism" value="2">
+                    <label for="I72">2</label>
+                    <input type="radio" class="r" id="I73" name="optimism" value="3">
+                    <label for="I73">3</label>
+                </div>
+            </form>
+            <form id="talent">
+                57. Talent/Interests:
+                <div class="radios">
+                    <input type="radio" class="r" id="I80" name="talent" value="0" checked>
+                    <label for="I80">0</label>
+                    <input type="radio" class="r" id="I81" name="talent" value="1">
+                    <label for="I81">1</label>
+                    <input type="radio" class="r" id="I82" name="talent" value="2">
+                    <label for="I82">2</label>
+                    <input type="radio" class="r" id="I83" name="talent" value="3">
+                    <label for="I83">3</label>
+                </div>
+            </form>
+            <form id="spirit">
+                58. Spiritual/Religous:
+                <div class="radios">
+                    <input type="radio" class="r" id="I90" name="spirit" value="0" checked>
+                    <label for="I90">0</label>
+                    <input type="radio" class="r" id="I91" name="spirit" value="1">
+                    <label for="I91">1</label>
+                    <input type="radio" class="r" id="I92" name="spirit" value="2">
+                    <label for="I92">2</label>
+                    <input type="radio" class="r" id="I93" name="spirit" value="3">
+                    <label for="I93">3</label>
+                </div>
+            </form>
+            <form id="community">
+                59. Community Life:
+                <div class="radios">
+                    <input type="radio" class="r" id="I100" name="community" value="0" checked>
+                    <label for="I100">0</label>
+                    <input type="radio" class="r" id="I101" name="community" value="1">
+                    <label for="I101">1</label>
+                    <input type="radio" class="r" id="I102" name="community" value="2">
+                    <label for="I102">2</label>
+                    <input type="radio" class="r" id="I103" name="community" value="3">
+                    <label for="I103">3</label>
+                </div>
+            </form>
+            <form id="independent">
+                60. Independent Living Skills (14 and up):
+                <div class="radios">
+                    <input type="radio" class="r" id="I110" name="independent" value="0" checked>
+                    <label for="I110">0</label>
+                    <input type="radio" class="r" id="I111" name="independent" value="1">
+                    <label for="I111">1</label>
+                    <input type="radio" class="r" id="I112" name="independent" value="2">
+                    <label for="I112">2</label>
+                    <input type="radio" class="r" id="I113" name="independent" value="3">
+                    <label for="I113">3</label>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
